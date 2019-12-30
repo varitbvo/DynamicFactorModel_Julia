@@ -5,4 +5,4 @@ The project is implemented in Julia. The important notion includes the following
 - Kalman Filter algorithm
 - Principal Component Analysis
 - Expectation Maximization (EM) algorithm or Metropolis-Hasting algorithm
-- Dynamic Factor Model ($\sigma$)
+- Dynamic Factor Model
