@@ -6,3 +6,6 @@ The project is implemented in Julia. The important notion includes the following
 - Principal Component Analysis
 - Expectation Maximization (EM) algorithm or Metropolis-Hasting algorithm
 - Dynamic Factor Model
+
+$$ Y = \mu + GX_t $$
+$$ X_{t+1} = AX_{t} $$
