@@ -47,8 +47,8 @@ catch
 end
 end
 =#
-# TODO: find a better way of downloading the data -- maybe in R, or updating the Fred pull tool, because it's very inconsistent about what it's able to pull and the CSV writing is far slower than you'd expect
+# TODO: find a better way of downloading the data -- maybe in R, or updating the Fred pull tool, because it's very inconsistent about what it's able to pull, the untreated CSV is very large and slow to write...
 dataout = download_and_transform_DFM(seriescodes, startdate, enddate)
-datestr = Dates.format(today(), "yyyy_mm_dd")
+datestr = Dates.format(today(), "yyyy-mm-dd")
 datavintage = "dfm_data_$datestr.csv"
 CSV.write(datavintage, dataout)
