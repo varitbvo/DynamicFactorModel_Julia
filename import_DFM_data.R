@@ -9,6 +9,10 @@ library(httr)
 
 
 seriescodes <- read_csv("fred_mnemonics_tcodes_and_blocks.csv")
+
+
+
+
 fredr_set_key("266c597cbf3d25f366b082b4bf5161fe")
 
 startdate = as.Date("1959-01-01")
@@ -43,6 +47,28 @@ fred_out <- pmap_dfr(
   .f = ~ fredr(series_id = ..1, frequency = ..2, observation_start = ..3, observation_end = ..4)
 )
 
+q_seriescodes = data.frame(fredcode = c('GDPC1','GDPDEF'), transform = c(1,1), block = c('Q','Q'))
+
+params_q <-list(
+  series_id = c('GDPC1','GDPDEF'),
+  frequency = "q",
+  observation_start = startdate,
+  observation_end = enddate,
+  units = "cch"
+)
+
+
+fred_out_q <- pmap_dfr(
+  .l = params_q,
+  .f = ~ fredr(series_id = ..1, frequency = ..2, observation_start = ..3, observation_end = ..4, units = ..5)
+)
+
+fred_out_q <- fred_out_q %>% 
+  mutate(date = add_with_rollback(date, months(2))) %>% 
+  mutate(value = value/100)
+
+fred_out <- rbind(fred_out,fred_out_q)
+
 dataout <- fred_out %>% 
   pivot_wider(names_from = series_id)
 
@@ -64,9 +90,16 @@ for (jj in 1:nrow(seriescodes)){
   )
 }
 
+dataout_new <- dataout_new %>%  pivot_longer(cols = -date) %>% 
+  group_by(name) %>%
+  mutate(value = value - mean(value, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  pivot_wider()
+
+  
 
 # export this vintage
 datestr <- as.character(today())
 
-#datavintage <- paste("dfm_data_vintage_", datestr, sep="")
-#CSV.write(datavintage, dataout)
+datavintage <- paste("dfm_data_vintage_", datestr,".csv", sep="")
+write.csv(dataout_new,datavintage)

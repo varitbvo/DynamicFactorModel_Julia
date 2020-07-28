@@ -6,6 +6,12 @@ using Distributions, GLM # OLS
 using DataFrames, CSV # Data analysis
 using Dates, Plots #printf # Misc...
 
-vintage = "dfm_data_2020_07_27"
+include("DFM_helpers.jl")
 
-data_in = CSV.Read("$vintage.csv")
+vintage = "dfm_data_vintage_2020-07-27"
+
+data_in =DataFrame!(CSV.File("$vintage.csv"))
+
+# Add in GDP data to the R file so that data_in includes it
+
+# 
