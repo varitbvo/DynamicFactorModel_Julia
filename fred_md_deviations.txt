@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 For the most part, we're using FRED-MD's data series.  This document notes where we're not and some other stuff about arbitrary-ish assignment.  There are a little more than 40 series whose mnemonics in the original FRED-MD documentation don't match up with an actual FRED mnmonic, usually because they've spliced some variables (for example), or because the series are actually taken from somewhere outside FRED (this is the S&P series)
 
 in general the spliced series I'm replacing with the unspliced series, and discontinued series are being removed.
@@ -42,3 +43,58 @@ UMCSENTx =UMCSENT (shorter time series)
 
 VXOCLSx is now VXOCLS
 
+=======
+For the most part, we're using FRED-MD's data series.  This document notes where we're not and some other stuff about arbitrary-ish assignment.  There are a little more than 40 series whose mnemonics in the original FRED-MD documentation don't match up with an actual FRED mnmonic, usually because they've spliced some variables (for example), or because the series are actually taken from somewhere outside FRED (this is the S&P series)
+
+CMRMTSPLx is now CMRMTSPL
+IPFPNSS
+IPFINAL
+IPCONGD
+IPDCONGD
+IPNCONGD
+IPBUSEQ
+IPMAT
+IPDMAT
+IPNMAT
+IPMANSICS
+IPFUELS
+CUMFNS
+HWI is taken from outside of FRED now that the HWI index is removed
+HWIURATIO is a function of HWI
+CLAIMSx is now ICSA
+HOUSTNE
+HOUSTMW
+HOUSTS
+HOUSTW
+AMDMNOx
+ANDENOx
+AMDMUOx
+BUSINVx
+ISRATIOx
+CONSPI
+CP3Mx
+COMPAPFFx
+EXSZUSx
+EXJPUSx
+EXUSUKx
+EXCAUSx
+WPSFD49207
+WPSFD49502
+WPSID61
+WPSID62
+OILPRICEx
+PPICMM
+CPIAPPSL
+CPITRNSL
+CPIMEDSL
+CUSR0000SAC
+CUSR0000SAD
+CUSR0000SAS
+CUSR0000SA0L2
+CUSR0000SA0L5
+CES0600000008
+UMCSENTx
+INVEST
+VXOCLSx is now VXOCLS
+
+>>>>>>> 318344c33c4e5ad5455378a3eda39ba55cb00ccb
